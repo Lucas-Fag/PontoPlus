@@ -6,10 +6,16 @@ import { AppComponent } from './app.component';
 import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { PerfilComponent } from './core/perfil/perfil.component';
+import { PontoComponent } from './core/ponto/ponto.component';
+import { RelatorioComponent } from './core/relatorio/relatorio.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PerfilComponent,
+    PontoComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,

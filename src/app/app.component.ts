@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { PoMenuItem } from '@po-ui/ng-components';
+import { PoMenuItem, PoToolbarProfile } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,22 @@ import { PoMenuItem } from '@po-ui/ng-components';
 })
 export class AppComponent {
 
+  constructor(private router: Router) { }
+
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) }
+    {label: "Meu perfil", shortLabel: "Perfil", action: () => {this.goTo("perfil")},  icon: "po-icon po-icon-user" },
+    {label: "Meu ponto" , shortLabel: "Ponto" , action: () => {this.goTo("")},  icon: "po-icon po-icon-change" },
+    {label: "Relatórios", shortLabel: "Relat" , action: () => {this.goTo("relatorio")},  icon: "po-icon po-icon-document-filled" }
   ];
 
-  private onClick() {
-    alert('Clicked in menu item')
+  readonly profile: PoToolbarProfile = {
+    avatar: "../assets/images/profile-avatar.png",
+    title: "Lucas Fagundes"
   }
+
+  private goTo(url: string) {
+    this.router.navigate([`/${url}`])
+  }
+
 
 }
