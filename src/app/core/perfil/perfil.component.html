@@ -1,4 +1,27 @@
 <po-page-default
   p-title="Perfil">
 
+  <po-dynamic-view
+    [p-fields]="camposView"
+    [p-value]="dados" >
+  </po-dynamic-view>
+
+  <po-dynamic-form
+    [p-fields]="camposForm"
+    [p-value]="dados">
+  </po-dynamic-form>
+
+  <div class="form-control-container">
+    <po-button
+      class="po-mr-1"
+      p-label="Cancelar"
+      p-kind="primary">
+    </po-button>
+
+    <po-button
+    p-label="Salvar"
+    p-kind="secondary">
+    </po-button>
+  </div>
+
 </po-page-default>
