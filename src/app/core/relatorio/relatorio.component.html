@@ -1,4 +1,20 @@
 <po-page-default
-  p-title="Relatórios">
+  p-title="Relatórios"
+  [p-actions]="acoes">
+
+  <po-table
+    [p-columns]="colunas"
+    [p-items]="dados"
+    [p-height]="tableHeight"
+    p-container="shadow"
+    [p-sort]="false"
+    [p-striped]="true"
+    [p-infinite-scroll]="true"
+    [p-hide-columns-manager]="true"
+    [p-hide-table-search]="true"
+    (p-show-more)="carregarDados(true)"
+    [p-show-more-disabled]="!hasNext"
+    [p-spacing]="espacamento">
+  </po-table>
 
 </po-page-default>
