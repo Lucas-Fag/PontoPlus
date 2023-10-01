@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 import { PerfilComponent } from './core/perfil/perfil.component';
 import { PontoComponent } from './core/ponto/ponto.component';
 import { RelatorioComponent } from './core/relatorio/relatorio.component';
-import { RelogioComponent } from './ponto/relogio/relogio.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { RelogioComponent } from './ponto/relogio/relogio.component';
     PerfilComponent,
     PontoComponent,
     RelatorioComponent,
-    RelogioComponent
   ],
   imports: [
     BrowserModule,
