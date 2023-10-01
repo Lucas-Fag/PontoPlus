@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { PerfilComponent } from './core/perfil/perfil.component';
 import { PontoComponent } from './core/ponto/ponto.component';
 import { RelatorioComponent } from './core/relatorio/relatorio.component';
+import { RelogioComponent } from './core/ponto/relogio/relogio.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { RelatorioComponent } from './core/relatorio/relatorio.component';
     PerfilComponent,
     PontoComponent,
     RelatorioComponent,
+    RelogioComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     PoModule,
     HttpClientModule,
     RouterModule.forRoot([])

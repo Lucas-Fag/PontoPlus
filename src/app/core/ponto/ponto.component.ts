@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./ponto.component.scss']
 })
 export class PontoComponent {
+  protected observacao: string = "";
+
+  public registrarPonto(): void {
+    console.log(`Registrar ponto: ${this.observacao}`);
+  }
+
 
 }

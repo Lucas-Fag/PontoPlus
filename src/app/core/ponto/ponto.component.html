@@ -1,4 +1,25 @@
 <po-page-default
   p-title="Meu ponto">
 
+  <div class="centralizado">
+    <app-relogio></app-relogio>
+  </div>
+
+  <div class="centralizado po-row po-mt-1 po-mb-1">
+    <po-input
+      name="obsevacaoInput"
+      class="po-md-6"
+      p-label="Observação"
+      p-placeholder="Digite aqui..."
+      [(ngModel)]="observacao">
+    </po-input>
+  </div>
+
+  <po-button
+    class="centralizado"
+    p-label="Registrar ponto"
+    p-kind="secondary"
+    (p-click)="registrarPonto()">
+  </po-button>
+
 </po-page-default>
