@@ -1,0 +1,46 @@
+<div class="centralizado">
+    <img class="logo-img" src="assets/images/logo-clara.png" alt="Logo PontoPlus">
+</div>
+
+<h1 class="centralizado po-font-display">Seja bem-vindo!</h1>
+
+<div class="centralizado po-row">
+    <po-login
+        class="po-md-6"
+        name="loginInput"
+        p-label="Usuário"
+        p-required="true"
+        [(ngModel)]="userName">
+    </po-login>
+</div>
+
+<div class="centralizado po-row">
+    <po-password
+        class="po-md-6"
+        name="passwordInput"
+        p-label="Senha"
+        p-required="true"
+        [(ngModel)]="userPassword">
+    </po-password>
+</div>
+
+<div class="centralizado po-row">
+    <div class="po-md-6 po-row">
+        <po-link
+            class="po-md-12 po-mb-1"
+            p-label="Esqueci minha senha">
+        </po-link>
+                
+        <po-button
+            class="po-md-12 po-mb-1"
+            p-label="Entrar"
+            p-kind="primary"
+            (p-click)="logar()">
+        </po-button>
+            
+        <po-link
+            class="po-md-12 centralizado"
+            p-label="Novo cadastro">
+        </po-link>
+    </div>
+</div>

@@ -11,6 +11,8 @@ import { PontoComponent } from './core/ponto/ponto.component';
 import { RelatorioComponent } from './core/relatorio/relatorio.component';
 import { RelogioComponent } from './core/ponto/relogio/relogio.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './core/auth/login/login.component';
+import { PrincipalComponent } from './core/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     PontoComponent,
     RelatorioComponent,
     RelogioComponent,
+    LoginComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,
