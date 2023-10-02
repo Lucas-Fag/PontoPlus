@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { PoMenuItem, PoToolbarProfile } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-principal',
-  templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.scss']
+  selector: 'app-core',
+  templateUrl: './core.component.html',
+  styleUrls: ['./core.component.scss']
 })
-export class PrincipalComponent {
-
+export class CoreComponent {
+  
   constructor(private router: Router) { }
 
   readonly menus: Array<PoMenuItem> = [
@@ -25,6 +25,5 @@ export class PrincipalComponent {
   private goTo(url: string) {
     this.router.navigate([`/${url}`])
   }
-
 
 }

@@ -1,0 +1,14 @@
+<div class="po-wrapper">
+    <po-toolbar
+      [p-profile]="profile"
+      [p-show-notification]="true">
+    </po-toolbar>
+  
+    <po-menu
+      [p-collapsed]="true"
+      p-logo="assets/images/logo-clara-sem-fundo.png"
+      [p-menus]="menus">
+    </po-menu>
+  
+    <router-outlet></router-outlet>
+  </div>

@@ -11,8 +11,9 @@ import { PontoComponent } from './core/ponto/ponto.component';
 import { RelatorioComponent } from './core/relatorio/relatorio.component';
 import { RelogioComponent } from './core/ponto/relogio/relogio.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './core/auth/login/login.component';
-import { PrincipalComponent } from './core/principal/principal.component';
+import { LoginComponent } from './auth/login/login.component';
+import { CoreComponent } from './core/core.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PrincipalComponent } from './core/principal/principal.component';
     RelatorioComponent,
     RelogioComponent,
     LoginComponent,
-    PrincipalComponent,
+    CoreComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
