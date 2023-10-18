@@ -42,4 +42,8 @@ export class LoginComponent {
 
   }
 
+  protected goToCadastro() {
+    this.router.navigate(['register']);
+  }
+
 }

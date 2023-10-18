@@ -7,7 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { UsuarioNaoAutenticadoGuard } from './shared/guard/usuario-nao-autenticado.guard';
 import { UsuarioAutenticadoGuard } from './shared/guard/usuario-autenticado.guard';
 import { CoreComponent } from './core/core.component';
-import { AuthComponent } from './auth/auth.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [
   {
@@ -18,10 +18,8 @@ const routes: Routes = [
       { path: 'relatorio', component: RelatorioComponent },
     ]
   },
-  {
-    path: 'login', component: AuthComponent, canActivate: [UsuarioNaoAutenticadoGuard],
-    children: [{ path: '', component: LoginComponent }]
-  }
+  { path: 'login', component: LoginComponent, canActivate: [UsuarioNaoAutenticadoGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [UsuarioNaoAutenticadoGuard] }
 ];
 
 @NgModule({

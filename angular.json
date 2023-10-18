@@ -33,7 +33,9 @@
               "./node_modules/@po-ui/style/css/po-theme-default.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -64,6 +66,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "PontoPlus:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "PontoPlus:build:production"

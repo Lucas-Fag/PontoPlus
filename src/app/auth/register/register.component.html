@@ -1,0 +1,117 @@
+<form [formGroup]="formulario">
+    <h1 class="centralizado po-mt-5">Cadastro de Usuário</h1>
+
+    <div class="centralizado po-row">
+        <div class="po-md-6">
+            <po-input
+                class="po-md-9"
+                p-name="nomeInput"
+                p-label="Nome"
+                p-required="true"
+                [p-show-required]="true"
+                p-icon="po-icon-user"
+                formControlName="nome">
+            </po-input>
+            <po-number
+                class="po-md-3"
+                p-name="ageInput"
+                p-label="Idade"
+                p-required="false"
+                [p-min]="0"
+                formControlName="idade">
+            </po-number>
+        </div>
+    </div>
+
+    <div class="centralizado po-row"> 
+        <div class="po-md-6">       
+            <po-email
+                class="po-md-7"
+                p-name="emailInput"
+                p-label="Email"
+                p-required="true"
+                [p-show-required]="true"
+                formControlName="email">
+            </po-email>
+            <po-input
+                class="po-md-5"
+                p-name="phoneInput"
+                p-label="Telefone"
+                p-required="false"
+                p-icon="po-icon-telephone"
+                formControlName="telefone">
+            </po-input>
+        </div>
+    </div>
+
+    <div class="centralizado po-row"> 
+        <po-password
+            class="po-md-6"
+            p-name="passwordInput"
+            p-label="Senha"
+            p-required="true"
+            [p-show-required]="true"
+            formControlName="senha">
+        </po-password>
+    </div>
+    
+    <div class="centralizado po-row"> 
+        <po-password
+            class="po-md-6"
+            p-name="passwordConfirmantionInput"
+            p-label="Confirmação de Senha"
+            p-required="true"
+            [p-show-required]="true"
+            formControlName="confirmacaoSenha">
+        </po-password>
+    </div>
+    
+    <div class="centralizado po-row"> 
+        <div class="po-md-6 po-row">
+            <po-number
+                class="po-md-6"
+                p-name="workLoadInput"
+                p-label="Carga horária de trabalho"
+                p-required="true"
+                [p-show-required]="true"
+                [p-min]="0"
+                formControlName="cargaHoraria">
+            </po-number>
+            <div class="po-row po-md-6 po-mt-4">
+                <po-switch
+                    class="po-md-2"
+                    name="policyAcceptanceInput"
+                    formControlName="politicas">
+                </po-switch>
+                <p class="po-md-10">
+                    Li e estou de acordo com as 
+                    <po-link 
+                        p-label="políticas da empresa e políticas de privacidade."
+                        (p-action)="visualizaPoliticas()">
+                    </po-link>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="centralizado po-row">
+        <div class="po-md-6 po-mt-1">
+            <div class="form-control-buttons">
+                <po-button
+                    class="po-mr-1"
+                    p-label="Cancelar"
+                    (p-click)="cancelar()"
+                    p-kind="primary">
+                </po-button>
+                
+                <po-button
+                    p-label="Salvar"
+                    p-kind="secondary"
+                    (p-click)="salvar()"
+                    [p-disabled]="!formulario.valid">
+                </po-button>
+            </div>
+        </div>
+    </div>
+
+</form>

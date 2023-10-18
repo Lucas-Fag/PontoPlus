@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PoModule } from '@po-ui/ng-components';
@@ -10,10 +9,10 @@ import { PerfilComponent } from './core/perfil/perfil.component';
 import { PontoComponent } from './core/ponto/ponto.component';
 import { RelatorioComponent } from './core/relatorio/relatorio.component';
 import { RelogioComponent } from './core/ponto/relogio/relogio.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { CoreComponent } from './core/core.component';
-import { AuthComponent } from './auth/auth.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +23,13 @@ import { AuthComponent } from './auth/auth.component';
     RelogioComponent,
     LoginComponent,
     CoreComponent,
-    AuthComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     PoModule,
     HttpClientModule,
     RouterModule.forRoot([])
