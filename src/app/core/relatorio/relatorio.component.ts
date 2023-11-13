@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoPageAction, PoTableColumn, PoTableColumnSpacing } from '@po-ui/ng-components';
+import { PontoService, Relatorio } from 'src/app/shared/service/ponto.service';
 
 @Component({
   selector: 'app-relatorio',
@@ -7,6 +8,11 @@ import { PoPageAction, PoTableColumn, PoTableColumnSpacing } from '@po-ui/ng-com
   styleUrls: ['./relatorio.component.scss']
 })
 export class RelatorioComponent implements OnInit {
+  
+  constructor(
+    private pontoService: PontoService
+  ) { }
+
   protected readonly acoes: Array<PoPageAction> = [
     {label: "Gerar relatório", action: this.gerarRelatorio.bind(this)}
   ];
@@ -38,6 +44,8 @@ export class RelatorioComponent implements OnInit {
   protected hasNext: boolean = true;
   protected tableHeight: number = 0;
   protected readonly espacamento = PoTableColumnSpacing.Large;
+  private page: number = 1;
+  private pageSize: number = 10;
   
   ngOnInit(): void {
     this.tableHeight = window.innerHeight * 0.70;
@@ -45,27 +53,31 @@ export class RelatorioComponent implements OnInit {
   }
 
   public carregarDados(carregarMais: boolean) {
+    
     if (carregarMais) {
+      let pontos: Relatorio;
       
-      this.dados = [...this.dados, ...[
-        { hora: "18:30:00", tipo: "S", observacao: "Saída", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "18:30:00", tipo: "E", observacao: "Retorno do almoço", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "12:00:00", tipo: "S", observacao: "Saída para almoço", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "18:30:00", tipo: "E", observacao: "Primeira entrada", data: new Date(2023, 4, 23), status: "C", acoes: ["edit"] }
-      ]]
-      this.hasNext = false;
+      this.page++;
+
+      pontos = this.pontoService.getPontos(this.page, this.pageSize);
+
+      this.dados = [
+        ...this.dados, ...pontos.pontos
+      ];
+      this.hasNext = pontos.hasNext;
 
     } else {
+      let pontos: Relatorio;
       
-      this.dados = [
-        { hora: "18:30:00", tipo: "S", observacao: "Saída", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "18:30:00", tipo: "E", observacao: "Retorno do almoço", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "12:00:00", tipo: "S", observacao: "Saída para almoço", data: new Date(2023, 4, 24), status: "I", acoes: ["edit"] },
-        { hora: "18:30:00", tipo: "E", observacao: "Primeira entrada", data: new Date(2023, 4, 23), status: "C", acoes: ["edit"] }
-      ];
-      this.hasNext = true;
+      this.page = 1;
+
+      pontos = this.pontoService.getPontos(this.page, this.pageSize);
+
+      this.dados = pontos.pontos;
+      this.hasNext = pontos.hasNext;
 
     }
+
   }
 
   protected gerarRelatorio() {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PontoService } from 'src/app/shared/service/ponto.service';
 
 @Component({
   selector: 'app-ponto',
@@ -8,8 +9,11 @@ import { Component } from '@angular/core';
 export class PontoComponent {
   protected observacao: string = "";
 
+  constructor (private pontoService: PontoService) { }
+
   public registrarPonto(): void {
-    console.log(`Registrar ponto: ${this.observacao}`);
+    this.pontoService.registrarPonto(this.observacao);
+    this.observacao = "";
   }
 
 
