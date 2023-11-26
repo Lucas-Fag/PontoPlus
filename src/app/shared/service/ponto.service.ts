@@ -24,19 +24,16 @@ export class PontoService {
   }
 
   public getPontos(page: number, pageSize: number): Relatorio {
-    let inicio: number = (page-1) * pageSize;
-    let fim: number = page * pageSize;
-    let regsReturn: Array<RegistroPonto> = this.pontosRegistrados.slice(inicio, fim);
-    let hasNext: boolean = this.pontosRegistrados.length-1 > fim;
     let pontos: Array<RelatorioItem> = [];
 
-    regsReturn.forEach( (registro: RegistroPonto) => {
+    for (let index = 0; index < this.pontosRegistrados.length; index++) {
+      const registro = this.pontosRegistrados[index];
       let hora: string = registro.data.toLocaleTimeString();
       let tipo: TipoPonto = registro.tipo;
       let observacao: string = registro.observacao;
       let data: Date = registro.data;
       let status: StatusPonto = StatusPonto.COMPLETO;
-      let acoes: Array<string> = ["edit"]
+      let acoes: Array<string> = ["edit", "delete"];
 
       pontos.push({
         hora: hora,
@@ -45,10 +42,34 @@ export class PontoService {
         data: data,
         status: status,
         acoes: acoes,
-      })
-    });
+        indice: index
+      });
 
-    return {pontos: pontos, hasNext: hasNext};
+    }
+
+    return {pontos: pontos, hasNext: false};
+  }
+
+  public removePonto(indice: number) {
+
+    if (indice < 0 || indice >= this.pontosRegistrados.length) {
+      return;
+    }
+  
+    this.pontosRegistrados.splice(indice, 1);
+  }
+
+  public alterar(indice: number, dados: RelatorioItem) {
+    
+    if (indice < 0 || indice >= this.pontosRegistrados.length) {
+      return;
+    }
+
+    dados.data = new Date(`${dados.data}T${dados.hora}`);
+  
+    this.pontosRegistrados[indice].data = dados.data;
+    this.pontosRegistrados[indice].tipo = dados.tipo;
+    this.pontosRegistrados[indice].observacao = dados.observacao;
   }
 
 }
@@ -59,7 +80,7 @@ interface RegistroPonto {
   observacao: string;
 }
 
-enum TipoPonto {
+export enum TipoPonto {
   ENTRADA = "E",
   SAIDA = "S"
 }
@@ -74,12 +95,13 @@ enum StatusPonto {
   INCOMPLETO = "I"
 }
 
-interface RelatorioItem {
+export interface RelatorioItem {
   hora: string;
   tipo: TipoPonto;
   observacao: string;
   data: Date;
   status: StatusPonto;
   acoes: Array<string>;
+  indice: number;
 }
 

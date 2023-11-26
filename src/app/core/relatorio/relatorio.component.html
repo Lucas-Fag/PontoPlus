@@ -1,6 +1,5 @@
 <po-page-default
-  p-title="Relatórios"
-  [p-actions]="acoes">
+  p-title="Relatórios">
 
   <po-table
     [p-columns]="colunas"
@@ -18,3 +17,37 @@
   </po-table>
 
 </po-page-default>
+
+<po-modal
+  p-title="Editar"
+  #modalEditar
+  [p-hide-close]="true"
+  [p-primary-action]="acaoConfirmar"
+  [p-secondary-action]="acaoCancelar">
+
+  <div class="po-row">
+    <po-datepicker class="po-md-6"
+      p-label="Data"
+      [(ngModel)]="regEditando.data">
+    </po-datepicker>
+    
+    <po-input class="po-md-6"
+      p-label="Hora"
+      p-mask="99:99:99"
+      p-mask-format-model="true"
+      [(ngModel)]="regEditando.hora">
+    </po-input>
+
+    <po-input class="po-md-12"
+      p-label="Observação"
+      [(ngModel)]="regEditando.observacao">
+    </po-input>
+
+    <po-radio-group class="po-md-12"
+      p-label="Tipo"
+      [p-options]="tipoOptions"
+      [(ngModel)]="regEditando.tipo">
+    </po-radio-group>
+  </div>
+
+</po-modal>
